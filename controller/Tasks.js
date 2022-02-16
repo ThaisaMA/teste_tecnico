@@ -1,4 +1,10 @@
-const { createTasks, getAll, getOne, updateById, removeById } = require("../service/Tasks");
+const { 
+    createTasks, 
+    getAll, 
+    getOne, 
+    updateById, 
+    removeById 
+} = require("../service/Tasks");
 
 
 const createNewTasks = async (req, res) => {

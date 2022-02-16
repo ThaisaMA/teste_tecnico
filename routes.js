@@ -1,8 +1,15 @@
-const { createNewTasks, getAllTasks, getOneTask, updateTaskById, deleteTask } = require('./controller/Tasks');
+const { 
+    createNewTasks,
+    getAllTasks,
+    getOneTask, 
+    updateTaskById,
+    deleteTask 
+} = require('./controller/Tasks');
+const { validateTask } = require('./Validations');
 
 const router = require('express').Router();
 
-router.post('/',createNewTasks);
+router.post('/', validateTask, createNewTasks);
 router.get('/', getAllTasks);
 router.get('/:id', getOneTask);
 router.put('/:id', updateTaskById);

@@ -5,11 +5,8 @@ const collection = 'tasks';
 
 const create = async ({ task, status }) => {
     const db = await connection();
-    const insertTask = await db.collection(collection).insertOne( 
-        { task, status }, 
-    );
-    const task = insertTask.ops[0];
-    return { task };
+    await db.collection(collection).insertOne({ task, status });
+    return { task, status };
 };
 
 const findAll = async () => {

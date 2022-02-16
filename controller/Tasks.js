@@ -10,8 +10,8 @@ const {
 const createNewTasks = async (req, res) => {
     try {
         const { task, status} = req.body;
-        const task = await createTasks({ task, status });
-        return res.status(201).json(task);
+        const newTask = await createTasks({ task, status });
+        return res.status(201).json(newTask);
     } catch (error) {
         console.log(error);
     }
@@ -52,7 +52,7 @@ const updateTaskById = async (req, res) => {
 const deleteTask = async (req, res) => {
     try {
         const { id } = req.params;
-        const taskDelete = await removeById({ idDono, role, id });
+        const taskDelete = await removeById(id);
         if (taskDelete.erroCode) return res.status(401).json({ message: 'task not found' });
         return res.status(204).json(taskDelete);
     } catch (error) {

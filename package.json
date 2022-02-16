@@ -20,7 +20,8 @@
   "homepage": "https://github.com/ThaisaMA/Desafio-Tecnico#readme",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "mongodb": "^4.3.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

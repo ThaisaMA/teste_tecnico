@@ -11,6 +11,8 @@ const getOne = async (id) => {
 };
 
 const updateById = async ({ id, task, status }) => {
+    const taskExist = await find(id);
+    if (!taskExist) return { erroCode: 'NOT_EXISTS' };
     const taskUpdate = await update({ id, task, status });
     return taskUpdate;
 };

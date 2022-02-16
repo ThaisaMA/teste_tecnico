@@ -1,4 +1,4 @@
-const { createTasks, getAll } = require("../service/Tasks");
+const { createTasks, getAll, getOne } = require("../service/Tasks");
 
 
 const createNewTasks = async (req, res) => {
@@ -7,7 +7,7 @@ const createNewTasks = async (req, res) => {
         const task = await createTasks({ task, status });
         return res.status(201).json(task);
     } catch (error) {
-        console.log(error);recipe
+        console.log(error);
     }
 };
 
@@ -20,7 +20,20 @@ const getAllTasks = async (_req, res) => {
     }
 };
 
+const getOneTask = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const taskId = await getOne(id);
+        if (taskId.erroCode) return res.status(404).json({ message: 'task not found' });
+        return res.status(200).json(taskId);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
 module.exports = {
     createNewTasks,
     getAllTasks,
+    getOneTask,
 }

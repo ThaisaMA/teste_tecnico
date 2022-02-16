@@ -1,4 +1,4 @@
-const { createTasks, getAll, getOne, updateById } = require("../service/Tasks");
+const { createTasks, getAll, getOne, updateById, removeById } = require("../service/Tasks");
 
 
 const createNewTasks = async (req, res) => {
@@ -43,10 +43,23 @@ const updateTaskById = async (req, res) => {
     }
 };
 
+const deleteTask = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const taskDelete = await removeById({ idDono, role, id });
+        if (taskDelete.erroCode) return res.status(401).json({ message: 'task not found' });
+        return res.status(204).json(taskDelete);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
 
 module.exports = {
     createNewTasks,
     getAllTasks,
     getOneTask,
     updateTaskById,
+    deleteTask,
 }

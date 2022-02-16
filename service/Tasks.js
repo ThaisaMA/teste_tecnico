@@ -10,10 +10,15 @@ const getOne = async (id) => {
     return taskExist;
 };
 
+const updateById = async ({ id, task, status }) => {
+    const taskUpdate = await update({ id, task, status });
+    return taskUpdate;
+};
 
     
 module.exports = {
     createTasks,
     getAll,
     getOne,
+    updateById,
 }        

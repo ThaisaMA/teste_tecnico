@@ -1,4 +1,4 @@
-const { create } = require("../model/Tasks");
+const { create, findAll } = require("../model/Tasks");
 
 const createTasks = async ({ task, status }) => create({ task, status });
 

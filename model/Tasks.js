@@ -31,10 +31,16 @@ const update = async ({ id, task, status }) => {
     return { _id: id, task, status };
 };
 
+const remove = async (id) => {
+    const db = await connection();
+    const removeTask = await db.collection(collection).deleteOne({ _id: ObjectId(id) });
+    return removeTask;
+};
 
 module.exports = {
     create,
     findAll,
     find,
     update,
+    remove
   };

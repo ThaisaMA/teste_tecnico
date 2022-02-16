@@ -24,9 +24,17 @@ const findAll = async () => {
     return idTask;   
 };
 
+const update = async ({ id, task, status }) => {
+    const db = await connection();
+    await db.collection(collection).updateOne({ _id: ObjectId(id) }, 
+    { $set: { task, status } });
+    return { _id: id, task, status };
+};
+
 
 module.exports = {
     create,
     findAll,
     find,
+    update,
   };
